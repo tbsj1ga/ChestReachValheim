@@ -186,6 +186,7 @@ namespace ChestReach
             { "area", new[] { "Pieces repaired: {0}", "Починено построек: {0}" } },
             { "area_none", new[] { "Nothing to repair nearby", "Рядом нечего чинить" } },
             { "area_station", new[] { "; {0} need a crafting station nearby", "; {0} требуют станцию рядом" } },
+            { "taken", new[] { "From the chests: {0}", "Из сундуков: {0}" } },
             { "tooltip", new[] { "In inventory: {0} · In chests nearby: {1}", "В инвентаре: {0} · В сундуках рядом: {1}" } },
         };
 

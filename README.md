@@ -23,11 +23,14 @@ Version history is in `CHANGELOG.md`.
   the cooking stations and the oven, mead bases for the fermenter (`Cook`).
 - **Repair all**: one press of the repair button at a station repairs every item it can.
 - **Area repair**: `;` repairs the damaged buildings within 50 m, as the hammer would one by
-  one — wards and the crafting station a piece needs (near the piece) are respected, nothing
-  is spent.
-- **Display**: a material amount that the inventory alone does not cover but the chests do is
-  drawn in its own colour instead of blinking red; the tooltip says how many are carried and
-  how many are in the chests nearby.
+  one — nearest first, each with the hammer's repair effect and sound, so you see what was
+  repaired and where; wards and the crafting station a piece needs (near the piece) are
+  respected, nothing is spent.
+- **Display**: a material reads `available/needed` — what you carry plus what is in the chests
+  nearby, over what it takes. An amount the inventory alone does not cover but the chests do
+  is drawn in its own colour instead of blinking red; the tooltip says how many are carried and
+  how many are in the chests nearby; after a craft or a placement the message log says what
+  was taken from the chests.
 
 Which chests: placed chests, carts, ship storage and chests the world placed (dungeons,
 villages). Not graves, not other players' private chests, not chests behind a ward you have
@@ -138,6 +141,8 @@ the mod and `SyncConfig` on.
 | 06 Repair | `AreaRepair` | `true` | the key repairs the buildings around you |
 | 06 Repair | `AreaRepairKey` | `;` | the key (each player's own) |
 | 06 Repair | `AreaRepairRadius` | `50` | radius of the area repair (1..100) |
+| 07 Display | `ShowAvailableAmount` | `true` | a material reads `available/needed` (carried + chests nearby) |
+| 07 Display | `ShowTakenMessage` | `true` | after a craft or a placement, what was taken from the chests in the message log |
 | 07 Display | `ShowCountsInTooltip` | `true` | carried and nearby counts in the material tooltip |
 | 07 Display | `CoveredColor` | light blue | colour of an amount covered by the chests |
 | 08 Sync | `SyncConfig` | `true` | on the server: send sections 01-06 to clients with the mod |

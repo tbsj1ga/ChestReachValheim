@@ -27,17 +27,26 @@ namespace ChestReach
             Stock s = build ? GetStock(player.transform.position, BuildRange) : GetStock(CraftCenter(player), CraftRange);
             int nearby = s.Count(name);
 
-            if (carried < need && carried + nearby >= need)
+            Transform amount = root.Find("res_amount");
+            TMP_Text text = amount != null ? amount.GetComponent<TMP_Text>() : null;
+            if (text != null)
             {
-                Transform amount = root.Find("res_amount");
-                TMP_Text text = amount != null ? amount.GetComponent<TMP_Text>() : null;
-                if (text != null) text.color = _cfgCoveredColor.Value;
+                if (_cfgShowTotal.Value) text.text = Short(carried + nearby) + "/" + need;
+                if (carried < need && carried + nearby >= need) text.color = _cfgCoveredColor.Value;
             }
             if (_cfgTooltip.Value && nearby > 0)
             {
                 UITooltip tip = root.GetComponent<UITooltip>();
                 if (tip != null) tip.m_text = (tip.m_text ?? "") + "\n" + T("tooltip", carried, nearby);
             }
+        }
+
+        // "12345/10" does not fit the amount field; thousands are shortened.
+        private static string Short(int n)
+        {
+            if (n < 10000) return n.ToString();
+            if (n < 1000000) return (n / 1000) + "k";
+            return (n / 1000000) + "M";
         }
 
         [HarmonyPatch(typeof(InventoryGui), "SetupRequirement")]

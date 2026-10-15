@@ -217,6 +217,7 @@ namespace ChestReach
             _consume = null;
             Inventory inv = p.GetInventory();
             CraftingStation station = p.GetCurrentCraftingStation();
+            List<string> report = new List<string>();
             foreach (Piece.Requirement req in requirements)
             {
                 if (!Counts(req, station)) continue;
@@ -226,8 +227,11 @@ namespace ChestReach
                 int missing = need - inv.CountItems(name, itemQuality);
                 if (missing <= 0) continue;
                 int taken = Take(ctx.Boxes, name, missing);
+                if (taken > 0) report.Add(ItemName(name) + " x" + taken);
                 if (taken < missing) Logger.LogWarning("Took " + taken + " of " + missing + " " + name + " from the chests; the rest was not there any more.");
             }
+            if (report.Count > 0 && _cfgShowTaken.Value)
+                p.Message(MessageHud.MessageType.TopLeft, T("taken", string.Join(", ", report.ToArray())));
         }
 
         [HarmonyPatch(typeof(Player), "HaveRequirementItems")]

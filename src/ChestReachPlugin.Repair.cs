@@ -12,14 +12,16 @@ namespace ChestReach
     //   * Area repair: a key repairs the damaged buildings around you as the hammer would,
     //     one by one: WearNTear.Repair sends the piece's owner its vanilla RPC_Repair. Wards
     //     and the crafting station a piece needs (near the piece) are respected, like the
-    //     hammer does near you; nothing is spent. Spread over frames.
+    //     hammer does near you; nothing is spent. Nearest first, a few per frame, each with
+    //     the piece's own placement effect and sound, as the hammer plays it - a wave going
+    //     out from you shows what was repaired and where.
     public partial class ChestReachPlugin
     {
         private bool _repairingAll;
         private readonly Queue<WearNTear> _repairQueue = new Queue<WearNTear>();
         private int _repairDone;
         private int _repairNoStation;
-        private const int RepairsPerFrame = 25;
+        private const int RepairsPerFrame = 3;
 
         // True: run the vanilla RepairOneItem (nothing repaired here).
         private bool BeforeRepairOne(InventoryGui gui)
@@ -58,7 +60,11 @@ namespace ChestReach
                 for (int i = 0; i < RepairsPerFrame && _repairQueue.Count > 0; i++)
                 {
                     WearNTear w = _repairQueue.Dequeue();
-                    if (w != null && w.Repair()) _repairDone++;
+                    if (w == null || !w.Repair()) continue;
+                    _repairDone++;
+                    Piece piece = w.GetComponent<Piece>();
+                    if (piece != null && piece.m_placeEffect != null)
+                        piece.m_placeEffect.Create(w.transform.position, w.transform.rotation);
                 }
                 if (_repairQueue.Count == 0) ReportAreaRepair();
                 return;
@@ -78,6 +84,7 @@ namespace ChestReach
             bool noWorkbench = ZoneSystem.instance != null && ZoneSystem.instance.GetGlobalKey(GlobalKeys.NoWorkbench);
             _repairDone = 0;
             _repairNoStation = 0;
+            List<KeyValuePair<float, WearNTear>> found = new List<KeyValuePair<float, WearNTear>>();
             foreach (WearNTear w in WearNTear.GetAllInstances())
             {
                 if (w == null) continue;
@@ -94,8 +101,10 @@ namespace ChestReach
                     _repairNoStation++;
                     continue;
                 }
-                _repairQueue.Enqueue(w);
+                found.Add(new KeyValuePair<float, WearNTear>((pos - me).sqrMagnitude, w));
             }
+            found.Sort(delegate(KeyValuePair<float, WearNTear> a, KeyValuePair<float, WearNTear> z) { return a.Key.CompareTo(z.Key); });
+            foreach (KeyValuePair<float, WearNTear> kv in found) _repairQueue.Enqueue(kv.Value);
             if (_repairQueue.Count == 0) ReportAreaRepair();
         }
 

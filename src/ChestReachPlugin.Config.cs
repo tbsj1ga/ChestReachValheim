@@ -35,6 +35,8 @@ namespace ChestReach
         private ConfigEntry<KeyboardShortcut> _cfgAreaRepairKey;
         private ConfigEntry<float> _cfgAreaRepairRadius;
 
+        private ConfigEntry<bool> _cfgShowTotal;
+        private ConfigEntry<bool> _cfgShowTaken;
         private ConfigEntry<bool> _cfgTooltip;
         private ConfigEntry<Color> _cfgCoveredColor;
 
@@ -89,6 +91,8 @@ namespace ChestReach
             _cfgAreaRepairRadius = Synced(Config.Bind("06 Repair", "AreaRepairRadius", 50f,
                 new ConfigDescription("Radius of the area repair, meters.", new AcceptableValueRange<float>(1f, 100f))));
 
+            _cfgShowTotal = Config.Bind("07 Display", "ShowAvailableAmount", true, "A material in a recipe or a piece reads 'available/needed': what you carry plus what is in the chests nearby, over what it takes. Off: only the amount needed, as in vanilla.");
+            _cfgShowTaken = Config.Bind("07 Display", "ShowTakenMessage", true, "After a craft or a placement, a line in the top-left message log says what was taken from the chests.");
             _cfgTooltip = Config.Bind("07 Display", "ShowCountsInTooltip", true, "The tooltip of a material in a recipe or a piece tells how many you carry and how many are in the chests nearby.");
             _cfgCoveredColor = Config.Bind("07 Display", "CoveredColor", new Color(0.62f, 0.83f, 1f, 1f), "Colour of a material amount that your inventory alone does not cover but the chests nearby do.");
 

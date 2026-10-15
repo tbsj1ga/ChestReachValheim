@@ -13,9 +13,11 @@ chests nearby.
   and the oven; mead bases for the fermenter; bones for the shield generator, ammo for the
   ballista.
 - **Repair all**: one press of the repair button repairs every item.
-- **Area repair**: `;` repairs the damaged buildings around you (wards and stations respected).
-- Material amounts covered by the chests show in their own colour; the tooltip tells how
-  many you carry and how many are in the chests nearby.
+- **Area repair**: `;` repairs the damaged buildings around you, nearest first, each with the
+  hammer's repair effect and sound (wards and stations respected).
+- Materials read `available/needed` (what you carry plus the chests nearby); amounts covered
+  by the chests show in their own colour; the tooltip tells how many you carry and how many
+  are in the chests nearby; the message log says what was taken from the chests.
 
 ## No lag near big storage
 
