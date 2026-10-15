@@ -24,8 +24,8 @@ Version history is in `CHANGELOG.md`.
 - **Repair all**: one press of the repair button at a station repairs every item it can.
 - **Area repair**: `;` repairs the damaged buildings within 50 m, as the hammer would one by
   one — nearest first, each with the hammer's repair effect and sound, so you see what was
-  repaired and where; wards and the crafting station a piece needs (near the piece) are
-  respected, nothing is spent.
+  repaired and where; wards are respected; a piece that needs a crafting station
+  is repaired when such a station reaches you, wherever the piece is; nothing is spent.
 - **Display**: a material reads `available/needed` — what you carry plus what is in the chests
   nearby, over what it takes. An amount the inventory alone does not cover but the chests do
   is drawn in its own colour instead of blinking red; the tooltip says how many are carried and
@@ -144,7 +144,7 @@ the mod and `SyncConfig` on.
 | 07 Display | `ShowAvailableAmount` | `true` | a material reads `available/needed` (carried + chests nearby) |
 | 07 Display | `ShowTakenMessage` | `true` | after a craft or a placement, what was taken from the chests in the message log |
 | 07 Display | `ShowCountsInTooltip` | `true` | carried and nearby counts in the material tooltip |
-| 07 Display | `CoveredColor` | light blue | colour of an amount covered by the chests |
+| 07 Display | `CoveredColor` | blue | colour of an amount covered by the chests |
 | 08 Sync | `SyncConfig` | `true` | on the server: send sections 01-06 to clients with the mod |
 
 ## Building

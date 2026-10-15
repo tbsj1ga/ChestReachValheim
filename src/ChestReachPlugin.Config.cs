@@ -94,15 +94,27 @@ namespace ChestReach
             _cfgShowTotal = Config.Bind("07 Display", "ShowAvailableAmount", true, "A material in a recipe or a piece reads 'available/needed': what you carry plus what is in the chests nearby, over what it takes. Off: only the amount needed, as in vanilla.");
             _cfgShowTaken = Config.Bind("07 Display", "ShowTakenMessage", true, "After a craft or a placement, a line in the top-left message log says what was taken from the chests.");
             _cfgTooltip = Config.Bind("07 Display", "ShowCountsInTooltip", true, "The tooltip of a material in a recipe or a piece tells how many you carry and how many are in the chests nearby.");
-            _cfgCoveredColor = Config.Bind("07 Display", "CoveredColor", new Color(0.62f, 0.83f, 1f, 1f), "Colour of a material amount that your inventory alone does not cover but the chests nearby do.");
+            _cfgCoveredColor = Config.Bind("07 Display", "CoveredColor", CoveredDefault, "Colour of a material amount that your inventory alone does not cover but the chests nearby do.");
 
             _cfgSync = Config.Bind("08 Sync", "SyncConfig", true, "The server sends its settings of sections 01-06 (except the key) to every connecting client with the mod and again when they change; the client uses them while connected. Players without the mod are never affected. Off on the server: every client uses its own file. Has no effect on a client.");
 
+            MigrateConfig();
             Config.SettingChanged += delegate { _syncDirty = true; };
         }
 
         private readonly HashSet<string> _excluded = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         private readonly HashSet<string> _serverExcluded = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        private static readonly Color CoveredDefault = new Color(0.3f, 0.72f, 1f, 1f);
+        private static readonly Color CoveredDefaultV1 = new Color(0.62f, 0.83f, 1f, 1f);
+
+        // 0.1.0 wrote a paler default into the file; a value nobody changed moves to the new one.
+        private void MigrateConfig()
+        {
+            Color c = _cfgCoveredColor.Value;
+            if (Mathf.Abs(c.r - CoveredDefaultV1.r) < 0.01f && Mathf.Abs(c.g - CoveredDefaultV1.g) < 0.01f && Mathf.Abs(c.b - CoveredDefaultV1.b) < 0.01f)
+                _cfgCoveredColor.Value = CoveredDefault;
+        }
 
         private void ReadExcluded()
         {

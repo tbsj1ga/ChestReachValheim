@@ -31,7 +31,11 @@ namespace ChestReach
             TMP_Text text = amount != null ? amount.GetComponent<TMP_Text>() : null;
             if (text != null)
             {
-                if (_cfgShowTotal.Value) text.text = Short(carried + nearby) + "/" + need;
+                if (_cfgShowTotal.Value)
+                {
+                    FitOnOneLine(text);
+                    text.text = Short(carried + nearby) + "/" + need;
+                }
                 if (carried < need && carried + nearby >= need) text.color = _cfgCoveredColor.Value;
             }
             if (_cfgTooltip.Value && nearby > 0)
@@ -41,7 +45,20 @@ namespace ChestReach
             }
         }
 
-        // "12345/10" does not fit the amount field; thousands are shortened.
+        // The amount field is made for "10": "4679/40" wrapped onto a second line that the
+        // field cuts off. One line, and the font shrinks to fit (down to 60 %), as TMP does
+        // by itself with auto-size; the vanilla size stays the largest.
+        private static void FitOnOneLine(TMP_Text text)
+        {
+            if (text.enableAutoSizing) return;
+            float size = text.fontSize;
+            text.textWrappingMode = TextWrappingModes.NoWrap;
+            text.fontSizeMax = size;
+            text.fontSizeMin = Mathf.Max(6f, size * 0.6f);
+            text.enableAutoSizing = true;
+        }
+
+        // Numbers past 9999 are shortened, so that the font does not shrink too far.
         private static string Short(int n)
         {
             if (n < 10000) return n.ToString();

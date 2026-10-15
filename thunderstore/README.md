@@ -14,7 +14,8 @@ chests nearby.
   ballista.
 - **Repair all**: one press of the repair button repairs every item.
 - **Area repair**: `;` repairs the damaged buildings around you, nearest first, each with the
-  hammer's repair effect and sound (wards and stations respected).
+  hammer's repair effect and sound (wards respected; pieces that need a station are repaired
+  when that station reaches you).
 - Materials read `available/needed` (what you carry plus the chests nearby); amounts covered
   by the chests show in their own colour; the tooltip tells how many you carry and how many
   are in the chests nearby; the message log says what was taken from the chests.

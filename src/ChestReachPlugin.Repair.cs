@@ -11,8 +11,9 @@ namespace ChestReach
     //     here one press runs the vanilla RepairOneItem until nothing repairable is left.
     //   * Area repair: a key repairs the damaged buildings around you as the hammer would,
     //     one by one: WearNTear.Repair sends the piece's owner its vanilla RPC_Repair. Wards
-    //     and the crafting station a piece needs (near the piece) are respected, like the
-    //     hammer does near you; nothing is spent. Nearest first, a few per frame, each with
+    //     are respected; a piece that needs a crafting station is repaired when such a
+    //     station reaches you, wherever the piece is within the radius (the hammer asks the
+    //     same of your position); nothing is spent. Nearest first, a few per frame, each with
     //     the piece's own placement effect and sound, as the hammer plays it - a wave going
     //     out from you shows what was repaired and where.
     public partial class ChestReachPlugin
@@ -85,6 +86,7 @@ namespace ChestReach
             _repairDone = 0;
             _repairNoStation = 0;
             List<KeyValuePair<float, WearNTear>> found = new List<KeyValuePair<float, WearNTear>>();
+            Dictionary<string, bool> stationNearMe = new Dictionary<string, bool>();
             foreach (WearNTear w in WearNTear.GetAllInstances())
             {
                 if (w == null) continue;
@@ -96,10 +98,20 @@ namespace ChestReach
                 if (view == null || view.GetZDO() == null) continue;
                 if (view.GetZDO().GetFloat(ZDOVars.s_health, w.m_health) >= w.m_health) continue;
                 if (!PrivateArea.CheckAccess(pos, 0f, false, false)) continue;
-                if (piece.m_craftingStation != null && !noWorkbench && CraftingStation.HaveBuildStationInRange(piece.m_craftingStation.m_name, pos) == null)
+                if (piece.m_craftingStation != null && !noWorkbench)
                 {
-                    _repairNoStation++;
-                    continue;
+                    string station = piece.m_craftingStation.m_name;
+                    bool near;
+                    if (!stationNearMe.TryGetValue(station, out near))
+                    {
+                        near = CraftingStation.HaveBuildStationInRange(station, me) != null;
+                        stationNearMe[station] = near;
+                    }
+                    if (!near)
+                    {
+                        _repairNoStation++;
+                        continue;
+                    }
                 }
                 found.Add(new KeyValuePair<float, WearNTear>((pos - me).sqrMagnitude, w));
             }
