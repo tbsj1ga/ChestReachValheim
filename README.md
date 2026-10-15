@@ -6,6 +6,10 @@ A Valheim mod: craft, build, refuel and cook with the materials in the chests ar
 Your inventory is used first; what it lacks comes from the chests nearby. Client-side only:
 players without the mod can join and play, the host and a dedicated server need nothing.
 
+![Crafting with an empty inventory: wood, obsidian, feathers and glands from the chests](https://raw.githubusercontent.com/tbsj1ga/ChestReachValheim/main/docs/media/crafting.webp)
+
+*Frost arrows with nothing in the inventory: the amounts are what you carry plus the chests nearby, in blue what only the chests cover.*
+
 Version history is in `CHANGELOG.md`.
 
 ## What it does
@@ -31,6 +35,13 @@ Version history is in `CHANGELOG.md`.
   is drawn in its own colour instead of blinking red; the tooltip says how many are carried and
   how many are in the chests nearby; after a craft or a placement the message log says what
   was taken from the chests.
+
+| | |
+|---|---|
+| ![Building with an empty inventory](https://raw.githubusercontent.com/tbsj1ga/ChestReachValheim/main/docs/media/building.webp) | ![Loading a smelter with nothing in hand](https://raw.githubusercontent.com/tbsj1ga/ChestReachValheim/main/docs/media/smelters.webp) |
+| Building with an empty inventory: the wood comes from the chests | A smelter loaded and fuelled with nothing in hand |
+| ![Area repair on ;](https://raw.githubusercontent.com/tbsj1ga/ChestReachValheim/main/docs/media/area-repair.webp) | ![The tooltip of a material](https://raw.githubusercontent.com/tbsj1ga/ChestReachValheim/main/docs/media/tooltip.png) |
+| Area repair on `;`: every piece repaired shows it | What you carry and what is in the chests nearby |
 
 Which chests: placed chests, carts, ship storage and chests the world placed (dungeons,
 villages). Not graves, not other players' private chests, not chests behind a ward you have

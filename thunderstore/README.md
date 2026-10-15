@@ -4,6 +4,10 @@
 materials back and forth. Your inventory is used first; whatever it lacks comes from the
 chests nearby.
 
+![Crafting with an empty inventory: wood, obsidian, feathers and glands from the chests](https://raw.githubusercontent.com/tbsj1ga/ChestReachValheim/main/docs/media/crafting.webp)
+
+*Frost arrows with nothing in the inventory: the amounts are what you carry plus the chests nearby, in blue what only the chests cover.*
+
 - **Crafting and upgrading** at any station with the chests around it (by hand: around you).
   Recipes light up when the chests have enough; multi-craft works too.
 - **Building** with the hammer, hoe and cultivator from the chests around you.
@@ -19,6 +23,13 @@ chests nearby.
 - Materials read `available/needed` (what you carry plus the chests nearby); amounts covered
   by the chests show in their own colour; the tooltip tells how many you carry and how many
   are in the chests nearby; the message log says what was taken from the chests.
+
+| | |
+|---|---|
+| ![Building with an empty inventory](https://raw.githubusercontent.com/tbsj1ga/ChestReachValheim/main/docs/media/building.webp) | ![Loading a smelter with nothing in hand](https://raw.githubusercontent.com/tbsj1ga/ChestReachValheim/main/docs/media/smelters.webp) |
+| Building with an empty inventory: the wood comes from the chests | A smelter loaded and fuelled with nothing in hand |
+| ![Area repair on ;](https://raw.githubusercontent.com/tbsj1ga/ChestReachValheim/main/docs/media/area-repair.webp) | ![The tooltip of a material](https://raw.githubusercontent.com/tbsj1ga/ChestReachValheim/main/docs/media/tooltip.png) |
+| Area repair on `;`: every piece repaired shows it | What you carry and what is in the chests nearby |
 
 ## No lag near big storage
 
