@@ -186,6 +186,7 @@ BepInEx, zip-пакеты, комплекты Nexus — см. `.gitignore`.
 | [![HostOwner](https://raw.githubusercontent.com/tbsj1ga/HostOwnerValheim/main/docs/media/icon-128.png)](https://thunderstore.io/c/valheim/p/j1gA/HostOwner/) | **[HostOwner](https://thunderstore.io/c/valheim/p/j1gA/HostOwner/)** — хост забирает себе станции и боссов рядом, чтобы его моды работали для всех. |
 | [![HudLayout](https://raw.githubusercontent.com/tbsj1ga/HudLayoutValheim/main/docs/media/icon-128.png)](https://thunderstore.io/c/valheim/p/j1gA/HudLayout/) | **[HudLayout](https://thunderstore.io/c/valheim/p/j1gA/HudLayout/)** — двигайте, масштабируйте и перекрашивайте HUD мышью: полосы, еда, хотбар, миникарта, даже HUD других модов. |
 | [![HealthPulse](https://raw.githubusercontent.com/tbsj1ga/HealthPulseValheim/main/docs/media/icon-128.png)](https://thunderstore.io/c/valheim/p/j1gA/HealthPulse/) | **[HealthPulse](https://thunderstore.io/c/valheim/p/j1gA/HealthPulse/)** — при низком здоровье края экрана пульсируют красным, как сердце. |
+| [![SwimGear](https://raw.githubusercontent.com/tbsj1ga/SwimGearValheim/main/docs/media/icon-128.png)](https://thunderstore.io/c/valheim/p/j1gA/SwimGear/) | **[SwimGear](https://thunderstore.io/c/valheim/p/j1gA/SwimGear/)** — оружие и инструменты остаются в руках, пока плывёшь, и FPS не проседает. |
 
 ## Помощь ИИ
 

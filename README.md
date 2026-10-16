@@ -190,6 +190,7 @@ the BepInEx config, zip packages, Nexus kits - see `.gitignore`.
 | [![HostOwner](https://raw.githubusercontent.com/tbsj1ga/HostOwnerValheim/main/docs/media/icon-128.png)](https://thunderstore.io/c/valheim/p/j1gA/HostOwner/) | **[HostOwner](https://thunderstore.io/c/valheim/p/j1gA/HostOwner/)** — The host takes ownership of stations and bosses near it, so its mods work for everyone. |
 | [![HudLayout](https://raw.githubusercontent.com/tbsj1ga/HudLayoutValheim/main/docs/media/icon-128.png)](https://thunderstore.io/c/valheim/p/j1gA/HudLayout/) | **[HudLayout](https://thunderstore.io/c/valheim/p/j1gA/HudLayout/)** — Move, resize and restyle your HUD with the mouse: bars, food, hotbar, minimap, even other mods' HUD. |
 | [![HealthPulse](https://raw.githubusercontent.com/tbsj1ga/HealthPulseValheim/main/docs/media/icon-128.png)](https://thunderstore.io/c/valheim/p/j1gA/HealthPulse/) | **[HealthPulse](https://thunderstore.io/c/valheim/p/j1gA/HealthPulse/)** — Low health warning: the screen edges pulse red like a heartbeat, faster as your health drops. |
+| [![SwimGear](https://raw.githubusercontent.com/tbsj1ga/SwimGearValheim/main/docs/media/icon-128.png)](https://thunderstore.io/c/valheim/p/j1gA/SwimGear/) | **[SwimGear](https://thunderstore.io/c/valheim/p/j1gA/SwimGear/)** — Keep your weapons and tools in your hands while swimming — no FPS cost. |
 
 ## AI assistance
 
